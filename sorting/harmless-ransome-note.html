@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    let magazineText = 'shit shit Hello everybody everybody hello Hello not not not'
+    let noteText = 'hello Hello everybody';
+    const magazineObj = {}; // JSON object to be filled
+    // unpacking Text into Arrays
+    const magazineArr = magazineText.split(' '); // unpacks into an array
+    const noteArr = noteText.split(' ');
+    
+    // fill temporary Object (magazineObj) with primitives
+    magazineArr.forEach(element => {    // EX6 phat arrow assign element
+        console.log(element);
+        if (!magazineObj[element]) magazineObj[element] = 0; // any existing element gets at least a 1 count
+        magazineObj[element] +=1; // increase value of 'element'
+    });
+    console.log(magazineObj);
+
+    let noteIsPossible = true;  // flag set to false if magazineObj comes up short by having a value of 0 during search
+    noteArr.forEach (element => {
+        if(magazineObj[element]) // check if noteArr [element] in magazineObj[element]
+            magazineObj[element] -= 1; // decrease value of found element (word) in Obj
+        else noteIsPossible = false;     
+    });
+    console.log(checkNote());
+    function checkNote(note) {
+        return noteIsPossible;
+    }
+    
+    </script>
+</body>
+</html>

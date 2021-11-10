@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("speread 'em");
+
+        /* the spread operator spreads an array into its elements */
+
+        // inserting elements from another array
+        let wordsAdd = ["the", "fucking"];
+        let polyrhythm = ["Pass", ...wordsAdd, "butter"];
+        console.log(polyrhythm);
+
+        // passing elements as args for function
+        function addThreeNums(a, b, c) {
+            return a + b + c;
+        }
+        let arrNums = [2, 4, 6];
+        console.log(addThreeNums(...arrNums));
+
+        // copy arrays
+        let arrA = [1, 2, 3];
+        let arrB = [...arrA];
+        arrB.push('motherfucker');
+        console.log(arrB);
+
+        // concatenate:
+        let arrC = ["A", "B", "C"];
+        let arrD = [1, 2, 3];
+        let arrE = [...arrC, 69,69,...arrD, 'suk madique']; // also arrC.concat arrD, this is less flexible
+        console.log(arrE);        
+
+        /* Rest operator collects elements and condenses them into a single array */
+        function multiply(multiplier, ...myArgs) {  // 5 will be the multiplier
+            return myArgs.map((element) => {
+                return multiplier * element;
+            });
+        }
+        console.log(multiply(5, 2, 4, 6, 69));
+
+        /* using reduce to return single values only */
+
+        let colors = ['red', 'red', 'blue', 'yellow', 'yellow'];
+
+        let distinctColors = colors.reduce(
+            (distinct, color) => 
+            (distinct.indexOf(color) !== -1) ?
+                distinct : 
+                [...distinct, color],
+        []
+        )
+        console.log(distinctColors);
+        </script>
+</body>
+</html>
